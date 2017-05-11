@@ -1,8 +1,8 @@
 # turtlepond
 
-agent-based models made with p5.js
+Agent-based models made with p5.js
 
-most gleaned from the books:
+Resources: 
 
 [Introduction to Agent-Based Modeling](http://www.intro-to-abm.com/)
 
