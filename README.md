@@ -1,6 +1,7 @@
 # turtlepond
 
-Agent-based models made with p5.js
+Agent-based models made with p5.js and Three.js 
+For learning, inspiration and dissemination 
 
 Resources: 
 
