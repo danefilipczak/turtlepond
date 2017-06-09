@@ -1,0 +1,190 @@
+<html>
+<head>
+<!--   <title>percolation</title>
+  -->
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+  <script language="javascript" type="text/javascript" src="patch.js"></script>
+    <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+        <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
+
+<style>
+body{
+  font-family:monospace;
+}
+#main{
+  position:absolute;
+  left:61.8%;
+  z-index:1;
+}
+#spiel{
+  margin-left:3px;
+  overflow:scroll;
+  position:fixed;
+  height:38.2%;
+  overflow:scroll;
+}
+#controls{
+  position:fixed;
+  top:38.2%;
+}
+</style>
+
+ 
+</head>
+<body>
+
+  <script>
+  function refreshDOM(){
+
+      document.getElementById("ixr").value = innerXRadius;
+      document.getElementById("innerX").innerHTML = "inner X radius "+ innerXRadius/w;
+      
+      document.getElementById("iyr").value = innerYRadius;
+      document.getElementById("innerY").innerHTML = "inner Y radius "+ innerYRadius/w;
+     
+      document.getElementById("oxr").value = outerXRadius;
+      document.getElementById("outerX").innerHTML = "outer X radius "+ outerXRadius/w;
+      
+      document.getElementById("oyr").value = outerYRadius;
+      document.getElementById("outerY").innerHTML = "outer Y radius "+ outerYRadius/w;
+
+      document.getElementById("rat").value = ratio;
+      document.getElementById("ratio").innerHTML = "ratio " + ratio;
+
+      document.getElementById("dens").value = initialDensity;
+      document.getElementById("density").innerHTML = "initial density " + initialDensity;
+
+  }
+  </script>
+
+  <div id="main">
+    <div id = "spiel">
+      This is a variation by Young ('84) of the reaction / diffusion originally introduced by Turing ('52). This model recasts the inhibitor / activator paradigm as a cellular automata, with each cell having an inner and outer elliptical neighborhood. "On" cells in a given cell's inner neighborhood work as activators while "on" cells in the outer neighborhood work as inhibitors. 
+
+       <br><br>D. A. Young. A local activator-inhibitor model of vertebrate skin patterns. Math. Biosciences, 72:51-58, 1984. 
+    </div>
+
+    <div id = "controls">
+       <button id = "reset" onclick = "reset()">reset</button>
+
+
+    <button id = "fiber" onclick = "setFiber()">fiber</button>
+    <script>
+    function setFiber(val){
+      
+      innerXRadius = 1.7*w;
+      innerYRadius = 0.9*w;
+      outerXRadius = 2.6*w;
+      outerYRadius = 1.9*w;
+      refreshDOM();
+      reset();
+    }
+    </script>
+     <button id = "fish" onclick = "setFish()">fish</button>
+   <script>
+  function setFish(){
+    innerXRadius = w*3;
+    innerYRadius = w*3;
+    outerXRadius = w*6;
+    outerYRadius = w*7;
+    ratio = 0.30;
+    initialDensity = 50;
+
+    refreshDOM();
+    reset();
+  }
+  </script>
+
+
+     <button id = "tiger" onclick = "setTiger()">tiger</button><br><br>
+   <script>
+  function setTiger(){
+    innerXRadius = w*1.5;
+    innerYRadius = w*3;
+    outerXRadius = w*5.2;
+    outerYRadius = w*5.5;
+    ratio = 0.24;
+    initialDensity = 31;
+
+    refreshDOM();
+    reset();
+  }
+  </script>
+
+    <input type = "range" id = "ixr" min="2" max="100" value="10" step="1" onchange="setInnerX(this.value)"></input>
+    <p id = "innerX"></p>
+    <script>
+    function setInnerX(val){
+      innerXRadius = val;
+      document.getElementById("innerX").innerHTML = "inner X radius: " + val/w;
+    }
+
+    </script>
+
+
+     <input type = "range" id = "iyr" min="2" max="100" value="10" step="1" onchange="setInnerY(this.value)"></input>
+    <p id = "innerY"></p>
+    <script>
+    function setInnerY(val){
+      innerYRadius = val;
+      document.getElementById("innerY").innerHTML = "inner Y radius: " + val/w;
+    }
+
+    </script>
+
+    <input type = "range" id = "oxr" min="2" max="100" value="10" step="1" onchange="setOuterX(this.value)"></input>
+    <p id = "outerX"></p>
+    <script>
+    function setOuterX(val){
+      outerXRadius = val;
+      document.getElementById("outerX").innerHTML = "outer X radius: " + val/w;
+    }
+
+    </script>
+
+    <input type = "range" id = "oyr" min="2" max="100" value="10" step="1" onchange="setOuterY(this.value)"></input>
+    <p id = "outerY"></p>
+    <script>
+    function setOuterY(val){
+      outerYRadius = val;
+      document.getElementById("outerY").innerHTML = "outer Y radius: " + val/w;
+    }
+
+    </script>
+
+    <input type = "range" id = "dens" min="0" max="100" value="50" step="1" onchange="setDensity(this.value)"></input>
+    <p id = "density"></p>
+    <script>
+    function setDensity(val){
+      initialDensity = val;
+      document.getElementById("density").innerHTML = "initial density: " + val;
+    }
+
+    </script>
+
+    <input type = "range" id = "rat" min="0.0" max="1.0" value="0.3" step = "0.01" onchange="setRatio(this.value)"></input>
+    <p id = "ratio"></p>
+    <script>
+    function setRatio(val){
+      ratio = val;
+      document.getElementById("ratio").innerHTML = "ratio: " + val;
+    }
+
+    </script>
+
+
+   
+   
+
+
+<p id = "working"></p>
+</div>
+
+
+
+
+   
+   </div>
+  </p>
+</body>
+</html>
