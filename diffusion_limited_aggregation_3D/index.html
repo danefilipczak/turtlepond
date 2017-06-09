@@ -1,0 +1,79 @@
+<html>
+
+<script src = "libs/three.min.js"></script>
+<script src = "setup.js"></script>
+<script src = "grit.js"></script>
+<script src = "loop.js"></script>
+<script src = "OrbitControls.js"></script>
+<head>
+
+	<style>
+	
+	#spiel{
+		position:fixed;
+		left:61.8%;
+		height:38.2%;
+		width:38.2%;
+		overflow:scroll;
+		font-family:monospace;
+		margin-left:3px;
+	}
+
+	#controls{
+		font-family:monospace;
+		position:fixed;
+		left:61.8%;
+		top:38.2%;
+		margin-left:3px;
+	}
+	</style>
+
+</head>
+
+<body>
+
+	<script>
+
+		
+
+			var render = function () {
+				requestAnimationFrame( render );
+
+				loop();
+
+				renderer.render(scene, camera);
+			};
+
+			//render();
+		</script>
+
+		<div id = "spiel">
+			
+			<br><br>
+			Particles fall randomly from above and aggregate when they collide with an already aggregated particle. 
+		</div>
+		<div id = "controls">
+			<button id = "reseter" onclick = "reset()">reset</button><br>
+		<br><button id = "wireframeToggle" onclick = "toggleWireframe()">wireframe</button>
+		<script>
+		function toggleWireframe(){
+			if(wireframe){
+				for(var i = 0; i < particles.length; i ++){
+					particles[i].mesh.visible = true;
+				}
+			} else {
+				for(var i = 0; i < particles.length; i ++){
+					particles[i].mesh.visible = false;
+				}
+
+			}
+			wireframe = !wireframe;
+		}
+		</script>
+		<br>
+		<br>
+		<i>navigate with the mouse and arrow keys
+			</i>
+	</div>
+</body>
+
