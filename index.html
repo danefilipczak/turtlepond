@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>TurtlePond</title>
+   
+<style>
+#nav{
+  position:fixed;
+  top:0px;
+  left:85%;
+  width:15%;
+  height:100%;
+  background-color:gray;
+  font-family:monospace;
+  color:white;
+  padding-left:5px;
+  padding-right:10px;
+  overflow:scroll;
+}
+
+</style>
+  </head>
+
+
+
+
+  <body>
+    <iframe id = "frame" src = "http://dane.audio/turtlepond/home" style="position: fixed; top:0px; left:0px; height: 100%; width: 85%; border: none"></iframe>
+
+    <div id = "nav">
+      <script>
+      function navigate(string){
+        document.getElementById('frame').src = 'http://dane.audio/turtlepond/' + string;
+      }
+      </script>
+
+      <a onClick = "navigate('home')">home</a><br><br>
+
+      <a onClick = "navigate('percolation')">percolation</a><br><br>
+
+      <a onClick = "navigate('diffusion_limited_aggregation_3D')">diffusion limited aggregation 3D</a><br><br>
+
+      <a onClick = "navigate('fur')">fur</a><br><br>
+
+    </div>
+  </body>
+</html>
