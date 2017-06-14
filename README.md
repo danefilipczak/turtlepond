@@ -1,3 +1,6 @@
+
+![logo](https://github.com/danefilipczak/turtlepond/blob/master/turtlepondlogo.png "")
+
 # turtlepond
 
 Agent-based models made with p5.js and Three.js 
