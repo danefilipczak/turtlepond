@@ -1,0 +1,110 @@
+<html>
+
+<script src = "libs/three.min.js"></script>
+<script src = "setup.js"></script>
+<script src = "oil.js"></script>
+<script src = "loop.js"></script>
+<script src = "OrbitControls.js"></script>
+<head>
+
+	<style>
+	
+	#spiel{
+		position:fixed;
+		left:61.8%;
+		height:38.2%;
+		width:38.2%;
+		overflow:scroll;
+		font-family:monospace;
+		margin-left:3px;
+	}
+
+	#controls{
+		font-family:monospace;
+		position:fixed;
+		left:61.8%;
+		top:38.2%;
+		margin-left:3px;
+	}
+	</style>
+
+</head>
+
+<body>
+
+	<script>
+
+		
+
+			var render = function () {
+				requestAnimationFrame( render );
+
+				loop();
+
+				renderer.render(scene, camera);
+			};
+
+			//render();
+		</script>
+
+		<div id = "spiel">
+			
+			<br><br>
+			Each voxel percolates upwards and diagonally to the southwest, southeast, northwest, and northeast with a probability of <i>porosity</i>
+		</div>
+		<div id = "controls">
+			<input type = "range" min = "0" value = "0.26" max = "1" step = "0.01"onchange = "setPorosity(this.value)"></input>
+			<p id = "porosityP"></p>
+			<script>
+			function setPorosity(val){
+				porosity = val;
+				document.getElementById("porosityP").innerHTML = "porosity: " + val;
+			}
+			</script>
+
+			<br>
+			<button id = "reseter" onclick = "reset()">reset</button><br>
+
+
+		<br><input type = "checkbox" onchange = "toggleWireframe()"> curves</input>
+		<script>
+		function toggleWireframe(){
+			wireframe = !wireframe;
+			if(wireframe){
+				for(var x = 0; x<world.x/w; x++){
+					for(var y = 1; y<world.y/w; y++){
+						for(var z = 0; z<world.z/w; z++){
+							if(oil[x][y][z].sodden){
+								//oil[x][y][z].line.visible=true;
+								oil[x][y][z].mesh.visible=false;
+							}
+						}
+					}
+				}
+				for(var i = 0; i<lines.length; i++){
+					lines[i].visible = true;
+				}
+			} else {
+				for(var x = 0; x<world.x/w; x++){
+					for(var y = 1; y<world.y/w; y++){
+						for(var z = 0; z<world.z/w; z++){
+							if(oil[x][y][z].sodden){
+								//oil[x][y][z].line.visible=false;
+								oil[x][y][z].mesh.visible=true;
+							}
+						}
+					}
+				}
+				for(var i = 0; i<lines.length; i++){
+					lines[i].visible = false;
+				}
+			}
+		}
+		</script>
+		<br>
+		<br>
+		<i>navigate with the mouse and arrow keys
+			</i>
+	</div>
+</body>
+
