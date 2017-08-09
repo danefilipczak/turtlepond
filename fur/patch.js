@@ -113,7 +113,8 @@ Patch.prototype.debugNeighbors = function(){
 
 Patch.prototype.display = function(){
 	if(this.a){
-		fill(50, 100);
+		//fill(50, 100);
+		fill(255);
 		
 	} else {
 		fill(70, 170, 200, 100); 

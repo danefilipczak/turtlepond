@@ -46,7 +46,9 @@ function draw(){
 }
 
 function reset(){
+  document.getElementsByTagName("body")[0].style.cursor = "wait";
   document.getElementById("working").innerHTML = "working . . . ";
+
 	for(var i = 0;i<width/w;i++){
   		for(var j = 0;j<height/w;j++){
   			patches[i][j].innerNdebug = false;
@@ -55,6 +57,7 @@ function reset(){
   		}
   	}
 	document.getElementById("working").innerHTML = "";
+  document.getElementsByTagName("body")[0].style.cursor = "default";
 }
 
 
